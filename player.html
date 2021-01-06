@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google" value="notranslate">
+  <link rel="shortcut icon" href="static/favicon.ico">
+  <title>Scratch 3.0 GUI: Player Example</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+
+    .stage-header_stage-header-wrapper-overlay_7uuff {
+      background-color: rgba(0, 0, 0, 0) !important;
+    }
+  </style>
+  <script>
+    window.scratchConfig = {
+      stageArea: {
+        scale: window.innerWidth / 480,
+        width: 480,
+        height: 360,
+        showControl: true, //是否显示舞台区控制按钮
+        showLoading: true, //是否显示Loading
+        fullscreenButton: { //全屏按钮
+          show: true,
+          handleBeforeSetStageUnFull() { //退出全屏前的操作
+            return true;
+          },
+          handleBeforeSetStageFull() { //全屏前的操作
+            return true;
+          }
+        },
+        startButton: { //开始按钮
+          show: true,
+          handleBeforeStart() { //开始前的操作
+            return true;
+          }
+        },
+        stopButton: { // 停止按钮
+          show: true,
+          handleBeforeStop() { //停止前的操作
+            return true;
+          }
+        }
+      },
+      handleVmInitialized: (vm) => {
+        window.vm = vm;
+        console.log('VM初始化完毕');
+
+      },
+      handleProjectLoaded: () => {
+        console.log('作品载入完毕');
+      },
+      handleDefaultProjectLoaded: () => {
+        window.parent.$jsBridge.onLoad();
+        //默认作品加载完毕，一般在这里控制项目加载
+        // window.scratch.setProjectName('默认项目');
+        // window.scratch.loadProject('/project.sb3', () => {
+        //   console.log('项目加载完毕');
+        //   window.scratch.setProjectName('默认项目');
+        // });
+      },
+      //默认项目地址,不需要修请删除本配置项
+      assetCDN: 'https://qn.wyxai.com'
+    };
+
+
+  </script>
+</head>
+
+<body>
+<div id="scratch">
+
+</div>
+<script type="text/javascript" src="lib.min.js"></script>
+<script type="text/javascript" src="chunks/player.js"></script>
+</body>
+<script>
+  window.onload = function () {
+    var button = document.querySelector('.stage-header_stage-button_4qxON');
+    button.click();
+    var button2 = document.querySelector('.stage-header_stage-button_4qxON');
+    button2.style.display = 'none';
+    button2.style.opacity = 0;
+
+  };
+</script>
+
+</html>
